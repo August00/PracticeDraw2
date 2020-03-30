@@ -7,9 +7,10 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import org.jetbrains.annotations.Nullable;
 
 public class Sample02RadialGradientView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
