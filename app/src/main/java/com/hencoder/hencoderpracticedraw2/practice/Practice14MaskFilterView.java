@@ -3,7 +3,9 @@ package com.hencoder.hencoderpracticedraw2.practice;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
+import android.graphics.MaskFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
@@ -37,19 +39,27 @@ public class Practice14MaskFilterView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        MaskFilter filter = new BlurMaskFilter(50, BlurMaskFilter.Blur.NORMAL);
+        MaskFilter filter1 = new BlurMaskFilter(50, BlurMaskFilter.Blur.INNER);
+        MaskFilter filter2 = new BlurMaskFilter(50, BlurMaskFilter.Blur.OUTER);
+        MaskFilter filter3 = new BlurMaskFilter(50, BlurMaskFilter.Blur.SOLID);
 
         // 用 Paint.setMaskFilter 来设置不同的 BlurMaskFilter
 
         // 第一个：NORMAL
+        paint.setMaskFilter(filter);
         canvas.drawBitmap(bitmap, 100, 50, paint);
 
         // 第二个：INNER
+        paint.setMaskFilter(filter1);
         canvas.drawBitmap(bitmap, bitmap.getWidth() + 200, 50, paint);
 
         // 第三个：OUTER
+        paint.setMaskFilter(filter2);
         canvas.drawBitmap(bitmap, 100, bitmap.getHeight() + 100, paint);
 
         // 第四个：SOLID
+        paint.setMaskFilter(filter3);
         canvas.drawBitmap(bitmap, bitmap.getWidth() + 200, bitmap.getHeight() + 100, paint);
     }
 }
